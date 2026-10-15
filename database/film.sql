@@ -1,10 +1,10 @@
-CREATE DATABASE IF NOT EXISTS data_film
+CREATE DATABASE IF NOT EXISTS film
 CHARACTER SET utf8mb4
 COLLATE utf8mb4_unicode_ci;
 
-USE data_film;
+USE film;
 
-CREATE TABLE IF NOT EXISTS film (
+CREATE TABLE IF NOT EXISTS data_film (
     id INT AUTO_INCREMENT PRIMARY KEY,
     judul VARCHAR(150) NOT NULL,
     sutradara VARCHAR(100) NOT NULL,
@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS film (
     rating DECIMAL(3,1) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-INSERT INTO film (judul, sutradara, tahun, genre, rating) VALUES
+INSERT INTO data_film (judul, sutradara, tahun, genre, rating) VALUES
 ('Interstellar', 'Christopher Nolan', 2014, 'Sci-Fi', 8.6),
 ('Laskar Pelangi', 'Riri Riza', 2008, 'Drama', 7.9),
 ('The Avengers', 'Joss Whedon', 2012, 'Action', 8.0),
