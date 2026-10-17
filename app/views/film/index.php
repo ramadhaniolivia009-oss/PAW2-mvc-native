@@ -3,35 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <title>Daftar Film</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h2>Daftar Film</h2>
-    <a href="index.php?page=film&action=create">Tambah Data Film</a>
-    <table border="1" cellpadding="8" cellspacing="0">
-        <tr>
-            <th>Judul</th>
-            <th>Sutradara</th>
-            <th>Tahun</th>
-            <th>Genre</th>
-            <th>Rating</th>
-            <th>Aksi</th>
-        </tr>
-        <?php foreach ($film as $f): ?>
-        <tr>
-            <td><?= htmlspecialchars($f['judul']) ?></td>
-            <td><?= htmlspecialchars($f['sutradara']) ?></td>
-            <td><?= htmlspecialchars($f['tahun']) ?></td>
-            <td><?= htmlspecialchars($f['genre']) ?></td>
-            <td><?= htmlspecialchars($f['rating']) ?></td>
-            <td>
-                <a href="index.php?page=film&action=edit&id=<?= $f['id'] ?>">Edit</a>
-                <form method="post" action="index.php?page=film&action=delete" style="display:inline" onsubmit="return confirm('Hapus data film ini?')">
-                    <input type="hidden" name="id" value="<?= $f['id'] ?>">
-                    <button type="submit">Hapus</button>
-                </form>
-            </td>
-        </tr>
-        <?php endforeach; ?>
-    </table>
+    <div class="container">
+        <h2>Daftar Film</h2>
+        <a href="index.php?page=film&action=create" class="btn btn-primary">Tambah Film</a>
+        <table>
+            <thead>
+                <tr>
+                    <th>Judul Film</th>
+                    <th>Genre</th>
+                    <th>Tahun Rilis</th>
+                    <th>Sutradara</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($film as $f): ?>
+                <tr>
+                    <td><?= htmlspecialchars($f['judul']) ?></td>
+                    <td><?= htmlspecialchars($f['genre']) ?></td>
+                    <td><?= htmlspecialchars($f['tahun']) ?></td>
+                    <td><?= htmlspecialchars($f['sutradara']) ?></td>
+                    <td>
+                        <a href="index.php?page=film&action=edit&id=<?= $f['id'] ?>" class="btn btn-edit">Edit</a>
+                        <form method="post" action="index.php?page=film&action=delete" style="display:inline" onsubmit="return confirm('Hapus data film ini?')">
+                            <input type="hidden" name="id" value="<?= $f['id'] ?>">
+                            <button type="submit" class="btn btn-delete">Hapus</button>
+                        </form>
+                    </td>
+                </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>
